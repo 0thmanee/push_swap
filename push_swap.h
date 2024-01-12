@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:56:50 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/10 00:12:09 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/12 02:02:55 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,18 @@
 # include "./libft/libft.h"
 # include "./ft_printf/ft_printf.h"
 
+typedef struct s_node
+{
+	int				data;
+	int				index;
+	struct s_node	*next;
+}					t_node;
+
 typedef struct s_stack
 {
-	int				value;
-	struct s_stack	*next;
-}				t_stack;
+	t_node	*head;
+	int		size;
+} t_stack;
+
 
 #endif
