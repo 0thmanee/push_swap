@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:55:25 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/14 17:24:30 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/14 21:57:26 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	free_lomor(char **strings)
 {
 	int		i;
 
+	if (!strings)
+		return ;
 	i = 0;
 	while (strings[i])
 	{
@@ -109,39 +111,6 @@ void	free_lomor(char **strings)
 	// 	(*a)->head = tmp;
 	// }
 }
-
-int	valid_args(int ac, char *av[], t_stack **a)
-{
-	int		i;
-	int		j;
-	int		k;
-	char	**strings;
-	
-	if (ac == 1)
-		return (ft_printf("Error\n"), 0);
-	i = 0;
-	k = 0;
-	while (++i < ac)
-	{
-		strings = ft_split(av[i], ' ');
-		if (strings)
-		{
-			j = 0;
-			while (strings[j])
-			{
-				if (!valid_nbr(strings[j]) || not_int(strings[j]))
-					(ft_printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
-				if (!add_to_stack(a, ft_atoi(strings[j]), k))
-					(ft_printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
-				k++;
-				j++;
-			}
-		}
-		free_lomor(strings);
-	}
-	return (1);
-}
-
 void	v()
 {
 	system("leaks a.out");
@@ -162,12 +131,47 @@ void ft_free_nodes(t_stack **stack)
 	}
 	free(*stack);
 }
+int	valid_args(int ac, char *av[], t_stack **a)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	**strings;
+	
+	i = 0;
+	k = 0;
+	while (++i < ac)
+	{
+		strings = ft_split(av[i], ' ');
+		if (strings)
+		{
+			j = 0;
+			while (strings[j])
+			{
+				if (!strings[j] || !valid_nbr(strings[j]) || not_int(strings[j]))
+					(ft_printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
+				if (!add_to_stack(a, ft_atoi(strings[j]), k))
+					(ft_printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
+				k++;
+				j++;
+			}
+		}
+		else
+			(ft_printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
+	}
+	return (1);
+}
+
 int	main(int ac, char *av[])
 {
 	t_stack	*a;
+	t_stack	*b;
+	(void)b;
 	
 	//atexit(v);
 	a = NULL;
+	if (ac == 1 || (ac == 2 && !ft_strncmp(av[1], "", 1)))
+		(ft_printf("Error\n"), exit(EXIT_FAILURE));
 	if (!valid_args(ac, av, &a))
         exit(EXIT_FAILURE);
 		

@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:32:08 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/14 17:21:34 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/14 22:02:37 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 
 	i = 0;
-	if (!s || !s[0])
+	if (!s || !s[0] || count_words(s, c) == 0)
 		return (NULL);
 	nbr_words = count_words(s, c);
 	strings = (char **) malloc (sizeof(char *) * (nbr_words + 1));

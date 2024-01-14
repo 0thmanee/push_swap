@@ -5,17 +5,16 @@ LIBFT = ./libft/libft.a
 PRINTF = ./ft_printf/libftprintf.a
 
 NAME = push_swap
-CFILES = parsing.c
+CFILES = push_swap.c parsing.c
 OFILES = $(CFILES:.c=.o)
-INCLUDES = push_swap.h
-
-LIBS = $(LIBFT) $(PRINTF)
+INCLUDES = push_swap.h libft/libft.h ft_printf/ft_printf.h
 
 all: $(NAME)
 	@printf "\033[32m[ ✔ ] %s\n\033[0m" "Program Created"
 
-$(NAME): $(OFILES) $(LIBS)
-	@$(CC) $(CFLAGS) $^ -o $@
+
+$(NAME): $(OFILES) $(LIBFT) $(PRINTF)
+	@$(CC) $(CFLAGS) $^ -o $@ $(LIBFT) $(PRINTF)
 
 %.o: %.c $(INCLUDES)
 	@$(CC) $(CFLAGS) -c $< -o $@
