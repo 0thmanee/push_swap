@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/obouchta/Desktop/push_swap",
-      "program": "/Users/obouchta/Desktop/push_swap/build/Debug/outDebug"
+      "cwd": "/Volumes/Othmane/push_swap",
+      "program": "/Volumes/Othmane/push_swap/build/Debug/outDebug"
     }
   ]
 }
