@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:55:25 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/14 06:58:22 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/14 17:24:30 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ int add_to_stack(t_stack **stack, int data, int index)
 void	free_lomor(char **strings)
 {
 	int		i;
-	t_node	*tmp;
 
 	i = 0;
 	while (strings[i])
@@ -117,8 +116,6 @@ int	valid_args(int ac, char *av[], t_stack **a)
 	int		j;
 	int		k;
 	char	**strings;
-	t_list	*node;
-	int		nbr;
 	
 	if (ac == 1)
 		return (ft_printf("Error\n"), 0);
@@ -127,7 +124,7 @@ int	valid_args(int ac, char *av[], t_stack **a)
 	while (++i < ac)
 	{
 		strings = ft_split(av[i], ' ');
-		if (strings && strings[0])
+		if (strings)
 		{
 			j = 0;
 			while (strings[j])
@@ -140,8 +137,6 @@ int	valid_args(int ac, char *av[], t_stack **a)
 				j++;
 			}
 		}
-		else
-			return (ft_printf("Error\n"), 0);
 		free_lomor(strings);
 	}
 	return (1);
@@ -169,16 +164,14 @@ void ft_free_nodes(t_stack **stack)
 }
 int	main(int ac, char *av[])
 {
-	int	i;
 	t_stack	*a;
 	
-	atexit(v);
+	//atexit(v);
 	a = NULL;
 	if (!valid_args(ac, av, &a))
-        return (1);
-    else
-        ft_printf("All Valid\n");
-
+        exit(EXIT_FAILURE);
+		
+    ft_printf("All Valid\n");
     t_node *tmp = a->head;
 	ft_printf("(%d)\n", a == NULL ? 0 : a->size);
     while (tmp)
@@ -187,5 +180,6 @@ int	main(int ac, char *av[])
         tmp = tmp->next;
     }
 	ft_free_nodes(&a);
+	exit(EXIT_SUCCESS);
 	return (0);
 }
