@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:55:25 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/14 21:57:26 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:44:04 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	valid_nbr(char *nbr)
 int	not_int(char *nbr)
 {
 	if (ft_strlen(nbr) >= 19)
-		return (0);
+		return (1);
 	if (ft_atoi(nbr) < -2147483648 || ft_atoi(nbr) > 2147483647)
 		return (1);
 	return (0);
@@ -139,27 +139,41 @@ int	valid_args(int ac, char *av[], t_stack **a)
 	char	**strings;
 	
 	i = 0;
-	k = 0;
+	k = -1;
 	while (++i < ac)
 	{
 		strings = ft_split(av[i], ' ');
 		if (strings)
 		{
-			j = 0;
-			while (strings[j])
+			j = -1;
+			while (strings[++j])
 			{
 				if (!strings[j] || !valid_nbr(strings[j]) || not_int(strings[j]))
 					(ft_printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
-				if (!add_to_stack(a, ft_atoi(strings[j]), k))
+				if (!add_to_stack(a, ft_atoi(strings[j]), ++k))
 					(ft_printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
-				k++;
-				j++;
 			}
 		}
 		else
 			(ft_printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
 	}
 	return (1);
+}
+
+void    print_stack(t_stack *stack)
+{
+    t_node    *current;
+
+    printf("--------------- \n");
+    current = stack->head;
+	printf("Size: %d	      |\n", stack->size);
+    printf("--------------- \n");
+    while (current != NULL)
+    {
+        printf("|%d|\n", current->data);
+        current = current->next;
+    }
+    printf("---------------\n");
 }
 
 int	main(int ac, char *av[])
@@ -174,15 +188,7 @@ int	main(int ac, char *av[])
 		(ft_printf("Error\n"), exit(EXIT_FAILURE));
 	if (!valid_args(ac, av, &a))
         exit(EXIT_FAILURE);
-		
-    ft_printf("All Valid\n");
-    t_node *tmp = a->head;
-	ft_printf("(%d)\n", a == NULL ? 0 : a->size);
-    while (tmp)
-    {
-        ft_printf("%d\n", tmp->data);
-        tmp = tmp->next;
-    }
+    print_stack(a);
 	ft_free_nodes(&a);
 	exit(EXIT_SUCCESS);
 	return (0);
