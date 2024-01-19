@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 18:54:19 by obouchta          #+#    #+#             */
-/*   Updated: 2023/11/14 09:13:09 by obouchta         ###   ########.fr       */
+/*   Created: 2024/01/19 17:13:10 by obouchta          #+#    #+#             */
+/*   Updated: 2024/01/19 18:47:53 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	sa(t_node **stack_a)
 {
-	t_list	*curr;
+	t_node	*tmp;
 
-	if (new == NULL)
+	if (!(*stack_a))
 		return ;
-	if (*lst == NULL)
-	{
-		*lst = new;
+	tmp = *stack_a;
+	*stack_a = (*stack_a)->next;
+	tmp->next = (*stack_a)->next;
+	(*stack_a)->next = tmp;
+}
+
+void	sb(t_node **stack_b)
+{
+	t_node	*tmp;
+
+	if (!(*stack_b))
 		return ;
-	}
-	curr = ft_lstlast(*lst);
-	curr->next = new;
+	tmp = *stack_b;
+	*stack_b = (*stack_b)->next;
+	tmp->next = (*stack_b)->next;
+	(*stack_b)->next = tmp;
+}
+
+void	ss(t_node **stack_a, t_node **stack_b)
+{
+	sa(stack_a);
+	sb(stack_b);
 }

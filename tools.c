@@ -1,16 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 14:32:08 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/14 22:02:37 by obouchta         ###   ########.fr       */
+/*   Created: 2024/01/19 17:02:49 by obouchta          #+#    #+#             */
+/*   Updated: 2024/01/19 17:10:31 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	len;
+
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
+}
+
+long	calc_result(long tmp, long result, char c, int sign)
+{
+	tmp = (result * 10) + (c - 48);
+	if (tmp < result && sign == 1)
+		return (-1);
+	else if (tmp < result && sign == -1)
+		return (0);
+	return (tmp);
+}
+
+long	ft_atoi(const char *str)
+{
+	int		i;
+	int		sign;
+	long	result;
+	long	tmp;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	tmp = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	{
+		result = calc_result(tmp, result, str[i], sign);
+		i++;
+	}
+	return (sign * result);
+}
 
 static size_t	count_words(char const *s, char c)
 {
@@ -98,4 +145,16 @@ char	**ft_split(char const *s, char c)
 	}
 	strings[i] = NULL;
 	return (strings);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n && s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+		i++;
+	if (i == n)
+		return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

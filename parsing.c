@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:55:25 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/15 17:44:04 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:05:55 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,15 +101,6 @@ void	free_lomor(char **strings)
 		i++;
 	}
 	free(strings);
-	// if (!(*a) || !(*a)->head)
-	// 	return ;
-	// tmp = (*a)->head;
-	// while (tmp)
-	// {
-	// 	tmp = tmp->next;
-	// 	free((*a)->head);
-	// 	(*a)->head = tmp;
-	// }
 }
 void	v()
 {
@@ -149,13 +140,13 @@ int	valid_args(int ac, char *av[], t_stack **a)
 			while (strings[++j])
 			{
 				if (!strings[j] || !valid_nbr(strings[j]) || not_int(strings[j]))
-					(ft_printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
+					(printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
 				if (!add_to_stack(a, ft_atoi(strings[j]), ++k))
-					(ft_printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
+					(printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
 			}
 		}
 		else
-			(ft_printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
+			(printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
 	}
 	return (1);
 }
@@ -185,7 +176,7 @@ int	main(int ac, char *av[])
 	//atexit(v);
 	a = NULL;
 	if (ac == 1 || (ac == 2 && !ft_strncmp(av[1], "", 1)))
-		(ft_printf("Error\n"), exit(EXIT_FAILURE));
+		(printf("Error\n"), exit(EXIT_FAILURE));
 	if (!valid_args(ac, av, &a))
         exit(EXIT_FAILURE);
     print_stack(a);

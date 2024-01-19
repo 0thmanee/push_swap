@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:56:50 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/15 17:37:28 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/19 18:22:28 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
-# include "./libft/libft.h"
-# include "./ft_printf/ft_printf.h"
 
 typedef struct s_node
 {
@@ -33,5 +31,12 @@ typedef struct s_stack
 	t_node	*tail;
 	int		size;
 } t_stack;
+
+
+size_t	ft_strlen(const char *s);
+long	calc_result(long tmp, long result, char c, int sign);
+long	ft_atoi(const char *str);
+char	**ft_split(char const *s, char c);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

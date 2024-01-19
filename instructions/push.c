@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prints.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 22:37:54 by obouchta          #+#    #+#             */
-/*   Updated: 2023/11/14 10:20:26 by obouchta         ###   ########.fr       */
+/*   Created: 2024/01/19 17:24:14 by obouchta          #+#    #+#             */
+/*   Updated: 2024/01/19 18:46:42 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-int	ft_prints(char *s)
+void	pa(t_node **stack_a, t_node **stack_b)
 {
-	int	j;
-	int	bytes;
+	t_node	*tmp;
 
-	bytes = 0;
-	if (s == NULL)
-	{
-		j = write(1, "(null)", 6);
-		if (j != -1)
-			bytes += j;
-		else
-			return (-1);
-	}
-	else
-	{
-		while (*s)
-		{
-			j = ft_printc(*s);
-			if (j != -1)
-				bytes += j;
-			else
-				return (-1);
-			s++;
-		}
-	}
-	return (bytes);
+	if (!(*stack_b))
+		return ;
+	tmp = *stack_b;
+	*stack_b = (*stack_b)->next;
+	tmp->next = *stack_a;
+	*stack_a = tmp;
+}
+
+void	pb(t_node **stack_a, t_node **stack_b)
+{
+	t_node	*tmp;
+
+	if (!(*stack_a))
+		return ;
+	tmp = *stack_a;
+	*stack_a = (*stack_a)->next;
+	tmp->next = *stack_b;
+	*stack_b = tmp;
 }
