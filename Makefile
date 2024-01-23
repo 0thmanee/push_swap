@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 NAME = push_swap
-CFILES = parsing.c tools.c
+CFILES = push_swap.c parsing.c tools.c instructions/swap.c instructions/push.c instructions/rotate.c instructions/rrotate.c
 OFILES = $(CFILES:.c=.o)
 INCLUDES = push_swap.h
 

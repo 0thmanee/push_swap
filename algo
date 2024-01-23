@@ -1,5 +1,0 @@
-* index the stacks
-* create function to sort 3 elements
-* push from a to b based on the index, if it's less than the average push it normaly, else push it then rotate it but keep 3 elements
-* in the stack b, create for each element a target pointer from the stack a (the lowest element greater than the node), then the cost (number of instractions (index of node + target) to move to top or bottom)
-* push from b the lowest node which has lowest cost, then reindex the 2 stacks, and repeat the same instractions

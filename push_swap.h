@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:56:50 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/19 18:22:28 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/20 23:53:41 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@
 
 typedef struct s_node
 {
-	int				data;
+	int				value;
 	int				index;
+	int				cost;
 	struct s_node	*next;
+	struct s_node	*target;
 }					t_node;
 
 typedef struct s_stack
 {
 	t_node	*head;
-	t_node	*tail;
 	int		size;
 } t_stack;
 
@@ -37,6 +38,19 @@ size_t	ft_strlen(const char *s);
 long	calc_result(long tmp, long result, char c, int sign);
 long	ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		valid_args(int ac, char *av[], t_stack **a);
+void	index_stack(t_stack *stack);
+void	sa(t_node **stack, char c);
+void	sb(t_node **stack, char c);
+void	ss(t_node **stack_a, t_node **stack_b);
+void	pa(t_node **stack_a, t_node **stack_b);
+void	pb(t_node **stack_a, t_node **stack_b);
+void	ra(t_node **stack, char c);
+void	rb(t_node **stack, char c);
+void	rr(t_node **stack_a, t_node **stack_b);
+void	rra(t_node **stack, char c);
+void	rrb(t_node **stack, char c);
+void	rrr(t_node **stack_a, t_node **stack_b);
 
 #endif

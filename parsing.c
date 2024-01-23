@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:55:25 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/19 17:05:55 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/22 21:56:41 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_duplicated(t_stack *stack, int data)
 	tmp = stack->head;
 	while (tmp)
 	{
-		if (tmp->data == data)
+		if (tmp->value == data)
 			return (1);
 		tmp = tmp->next;
 	}
@@ -67,19 +67,15 @@ int add_to_stack(t_stack **stack, int data, int index)
 	node = malloc(sizeof(t_node));
 	if (!node)
 		return (0);
-	node->data = data;
+	node->value = data;
 	node->index = index;
 	node->next = NULL;
-	if (!(*stack))
+	if (!(*stack)->head)
 	{
-		*stack = malloc(sizeof(t_stack));
-		if (!*stack)
-			return (0);
 		(*stack)->head = node;
 		(*stack)->size = 1;
 		return (1);
 	}
-	// add back
 	tmp = (*stack)->head;
 	while (tmp->next)
 		tmp = tmp->next;
@@ -102,26 +98,7 @@ void	free_lomor(char **strings)
 	}
 	free(strings);
 }
-void	v()
-{
-	system("leaks a.out");
-}
 
-void ft_free_nodes(t_stack **stack)
-{
-	t_node	*tmp;
-
-	if (!(*stack) || !(*stack)->head)
-		return ;
-	tmp = (*stack)->head;
-	while (tmp)
-	{
-		tmp = tmp->next;
-		free((*stack)->head);
-		(*stack)->head = tmp;
-	}
-	free(*stack);
-}
 int	valid_args(int ac, char *av[], t_stack **a)
 {
 	int		i;
@@ -130,7 +107,7 @@ int	valid_args(int ac, char *av[], t_stack **a)
 	char	**strings;
 	
 	i = 0;
-	k = -1;
+	k = 0;
 	while (++i < ac)
 	{
 		strings = ft_split(av[i], ' ');
@@ -148,39 +125,24 @@ int	valid_args(int ac, char *av[], t_stack **a)
 		else
 			(printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
 	}
+	free_lomor(strings);
 	return (1);
 }
 
-void    print_stack(t_stack *stack)
+void	index_stack(t_stack *stack)
 {
-    t_node    *current;
+	t_node	*tmp;
+	int		i;
 
-    printf("--------------- \n");
-    current = stack->head;
-	printf("Size: %d	      |\n", stack->size);
-    printf("--------------- \n");
-    while (current != NULL)
-    {
-        printf("|%d|\n", current->data);
-        current = current->next;
-    }
-    printf("---------------\n");
-}
-
-int	main(int ac, char *av[])
-{
-	t_stack	*a;
-	t_stack	*b;
-	(void)b;
-	
-	//atexit(v);
-	a = NULL;
-	if (ac == 1 || (ac == 2 && !ft_strncmp(av[1], "", 1)))
-		(printf("Error\n"), exit(EXIT_FAILURE));
-	if (!valid_args(ac, av, &a))
-        exit(EXIT_FAILURE);
-    print_stack(a);
-	ft_free_nodes(&a);
-	exit(EXIT_SUCCESS);
-	return (0);
+	if (!stack)
+		return ;
+	tmp = stack->head;
+	i = 1;
+	while (tmp)
+	{
+		tmp->index = i;
+		stack->size = i;
+		i++;
+		tmp = tmp->next;
+	}
 }
