@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:24:58 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/24 16:29:28 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:57:04 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,20 +93,20 @@ int	stack_s_max(t_node *stack)
 	return (max_value);
 }
 
-t_node	*stack_s_min(t_node *stack)
+int	stack_s_min(t_node *stack)
 {
-	t_node	*min_node;
+	int		min_value;
 	t_node	*tmp;
 
 	tmp = stack;
-	min_node = tmp;
+	min_value = tmp->value;
 	while (tmp)
 	{
-		if (tmp->value < min_node->value)
-			min_node = tmp;
+		if (tmp->value < min_value)
+			min_value = tmp->value;
 		tmp = tmp->next;
 	}
-	return (min_node);
+	return (min_value);
 }
 
 void	sort_stack3(t_stack **stack)
@@ -148,4 +148,28 @@ void free_nodes(t_node **node)
 		tmp = next;
 	}
 	node = NULL;
+}
+
+void	rotate_no_target(t_stack **stack, t_node *cheap)
+{
+	int		i;
+	
+	i = cheap->index;
+	if (cheap->index <= (*stack)->size / 2)
+	{
+		while (i > 1)
+		{
+			ra(&(*stack)->head, 'n');
+			i--;
+		}
+	}
+	else
+	{
+		i = (*stack)->size - i + 1;
+		while (i > 0)
+		{
+			rra(&(*stack)->head, 'n');
+			i--;
+		}
+	}
 }

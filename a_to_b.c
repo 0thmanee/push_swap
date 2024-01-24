@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:23:03 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/24 16:25:41 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:23:20 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,31 +52,6 @@ t_node	*find_cheapest_in_b(t_stack *a, t_stack *b)
 	return (cheap);
 }
 
-void	rotate_no_target(t_stack **a, t_node *cheap)
-{
-	int		i;
-	int		j;
-	
-	i = cheap->index;
-	j = cheap->target->index;
-	if (cheap->index <= (*a)->size / 2)
-	{
-		while (i > 1)
-		{
-			ra(&(*a)->head, 'n');
-			i--;
-		}
-	}
-	else
-	{
-		while (((*a)->size - i) > 0)
-		{
-			rra(&(*a)->head, 'n');
-			i--;
-		}
-	}
-}
-
 void	rotate_both(t_stack **a, t_stack **b, t_node *cheap)
 {
 	int		i;
@@ -97,7 +72,7 @@ void	rotate_both(t_stack **a, t_stack **b, t_node *cheap)
 	}
 	while (j > 1)
 	{
-		rb(&(*a)->head, 'n');
+		rb(&(*b)->head, 'n');
 		j--;
 	}
 }
@@ -122,7 +97,7 @@ void	rrotate_both(t_stack **a, t_stack **b, t_node *cheap)
 	}
 	while (j > 0)
 	{
-		rrb(&(*a)->head, 'n');
+		rrb(&(*b)->head, 'n');
 		j--;
 	}
 }
@@ -165,8 +140,11 @@ void	rra_rb(t_stack **a, t_stack **b, t_node *cheap)
 void	find_place_in_b(t_stack **a, t_stack **b)
 {
 	t_node	*tmp;
+	int		val;
+	int		avg;
 
 	tmp = find_cheapest_in_b(*a, *b);
+	val = tmp->value;
 	if (tmp->value == tmp->target->value)
 		rotate_no_target(a, tmp);
 	else if (tmp->index <= (*a)->size / 2 && tmp->target->index <= (*b)->size / 2)
@@ -196,73 +174,14 @@ void	push_to_b(t_stack **a, t_stack **b)
 	pb(&(*a)->head, &(*b)->head);
 	index_stack(*a);
 	index_stack(*b);
+	// int moy = stack_s_max((*a)->head) + stack_s_min((*a)->head) / 2;
 	while ((*a)->size > 3)
 	{
 		find_place_in_b(a, b);
 		index_stack(*a);
 		index_stack(*b);
 	}
-	sort_stack3(a);
+	if ((*a)->size <= 3)
+		sort_stack3(a);
 	index_stack(*a);
-}
-
-void	find_cheapest_in_a(t_stack *a, t_node *node)
-{
-	t_node	*tmp;
-
-	tmp = a->head;
-	node->target = node;
-	while (tmp)
-	{
-		if (tmp->value > node->value && node->value == node->target->value)
-			node->target = tmp;
-		if (tmp->value > node->value && tmp->value < node->target->value)
-			node->target = tmp;
-		tmp = tmp->next;
-	}	
-}
-
-void	rotate_a(t_stack **a, t_node *node)
-{
-	int	i;
-
-	i = node->index;
-	if (i <= (*a)->size / 2)
-	{
-		while (i > 1)
-		{
-			ra(&(*a)->head, 'n');
-			i--;
-		}
-	}
-	else
-	{
-		i = (*a)->size - i + 1;
-		while (i > 0)
-		{
-			rra(&(*a)->head, 'n');
-			i--;
-		}
-	}
-}
-
-void	push_to_a(t_stack **a, t_stack **b)
-{
-	t_node	*tmp;
-	t_node	*tmp2;
-	int		should_ra;
-
-	should_ra = 0;
-	while ((*b)->head && (*b)->size > 0)
-	{
-		tmp = (*b)->head;
-		find_cheapest_in_a(*a, tmp);
-		if (tmp->value == tmp->target->value)
-		printf("%d, %d\n", tmp->value, tmp->target->value);
-		tmp2 = tmp->target;
-		rotate_a(a, tmp2);
-		pa(&(*a)->head, &(*b)->head);
-		index_stack(*a);
-		index_stack(*b);
-	}
 }
