@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:24:58 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/24 17:57:04 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:24:00 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void	sort_stack3(t_stack **stack)
 		if (node->value > node->next->value)
 			sa(&(*stack)->head, 'n');
 	}
+	index_stack(*stack);
 }
 
 void free_nodes(t_node **node)

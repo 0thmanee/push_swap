@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:56:50 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/24 18:10:23 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:09:32 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,6 @@ int		stack_s_min(t_node *stack);
 void	sort_stack3(t_stack **stack);
 void	free_nodes(t_node **node);
 void	rotate_no_target(t_stack **stack, t_node *cheap);
-t_node	*find_cheapest_in_b(t_stack *a, t_stack *b);
-void	rotate_both(t_stack **a, t_stack **b, t_node *cheap);
-void	rrotate_both(t_stack **a, t_stack **b, t_node *cheap);
-void	ra_rrb(t_stack **a, t_stack **b, t_node *cheap);
-void	rra_rb(t_stack **a, t_stack **b, t_node *cheap);
-void	find_place_in_b(t_stack **a, t_stack **b);
 void	push_to_b(t_stack **a, t_stack **b);
 
 #endif

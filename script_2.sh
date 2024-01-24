@@ -6,8 +6,8 @@ touch $filename
 i=1
 while [[ i -le 100 ]]
 do
-A=($(seq 0 500 | sort -R | head -n 100))
-./push_swap "${A[@]}" | wc -l | awk '{if ($1 > 5500) printf("*************************** %d\n", $1); else print $1 }' >> $filename
+A=($(seq 0 1000 | sort -R | head -n 100))
+./push_swap "${A[@]}" | wc -l | awk '{if ($1 > 700) printf("*************************** %d\n", $1); else print $1 }' >> $filename
 ./push_swap "${A[@]}" | ./checker_Mac "${A[@]}" >> $filename
 (( i += 1 ))
 done
@@ -51,5 +51,3 @@ rm -f $filename
 echo "KO: $KO"
 echo "Count: $count"
 echo "Min: $min"
-echo "Average: $average"
-echo "Max: $max"

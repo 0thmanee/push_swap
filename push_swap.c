@@ -6,11 +6,77 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 00:03:01 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/24 18:10:42 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:09:04 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	push_to_b(t_stack **a, t_stack **b)
+{
+	int	avg;
+	
+	if (!(*a)->head || !(*a)->head->next)
+		return ;
+	if (!(*b))
+	{
+		*b = malloc(sizeof(t_stack));
+		if (!*b)
+			return ;
+	}
+	avg = stack_s_max((*a)->head) + stack_s_min((*a)->head) / 2;
+	while ((*a)->size > 3 && !stack_sorted((*a)->head))
+	{
+		pb(&(*a)->head, &(*b)->head);
+		index_stack(*a);
+		index_stack(*b);
+		if ((*b)->head->value < avg)
+		{
+			rrb(&(*b)->head, 'n');
+			index_stack(*b);
+		}
+	}
+	if ((*a)->size <= 3)
+		sort_stack3(a);
+}
+
+// void a_2_b(t_stack **a, t_stack **b, int p)
+// {
+// 	t_node *na = (*a)->head;
+// 	t_node *nb = (*b)->head;
+//     int    part;
+//     int count;
+//     count = 0;
+//     int len;
+
+//     len = 0;
+//     len = (*a)->size;
+//     if ((*a)->size > 3)
+//     {
+//         part = ((*a)->size / 3);
+//         count = part;
+//         while (count > 0)
+//         {
+//             if ((*a)->size == 3)
+//                 return ;
+//             if (na->index <= (part / 2) + p )
+//             {
+//                 pb(&na, &na);
+//                 count--;
+//             }
+//             else if (na->index <= part + p)
+//             {
+//                 pb(&na, &na);
+//                 rb(&nb, 'n');
+//                 count--;
+//             }
+//             else if (na->index > part + p)
+//                 ra(&na, 'n');
+//         }
+//     }
+//     if ((*a)->size > 3)
+//         a_2_b(a, b, (*b)->size);
+// }
 
 t_node	*find_cheapest_in_a(t_stack *a, t_stack *b)
 {
@@ -25,7 +91,7 @@ t_node	*find_cheapest_in_a(t_stack *a, t_stack *b)
 		if (tmp->index <= b->size / 2)
 			tmp->cost = tmp->index;
 		else
-			tmp->cost = b->size - tmp->index + 1;
+			tmp->cost = b->size - tmp->index;
 		tmp2 = a->head;
 		tmp->target = tmp;
 		while (tmp2)
@@ -41,7 +107,7 @@ t_node	*find_cheapest_in_a(t_stack *a, t_stack *b)
 			if (tmp->target->index <= a->size / 2)
 				tmp->cost += tmp->target->index;
 			else
-				tmp->cost += (a->size - tmp->target->index + 1);
+				tmp->cost += (a->size - tmp->target->index);
 		}
 		else if (tmp->value == tmp->target->value && tmp->index > b->size / 2)
 			tmp->cost++;
@@ -57,12 +123,10 @@ void	find_cheapest_for_no_targ(t_stack *a, t_stack *b, t_node *tmp)
 	t_node	*tmp2;
 
 	tmp2 = a->head;
-	tmp->target = tmp;
+	tmp->target = tmp2;
 	while (tmp2)
 	{
-		if (tmp2->value < tmp->value && tmp->value == tmp->target->value)
-			tmp->target = tmp2;
-		if (tmp2->value < tmp->value && tmp2->value > tmp->target->value)
+		if (tmp2->value < tmp->target->value)
 			tmp->target = tmp2;
 		tmp2 = tmp2->next;
 	}
@@ -71,7 +135,7 @@ void	find_cheapest_for_no_targ(t_stack *a, t_stack *b, t_node *tmp)
 		if (tmp->target->index <= a->size / 2)
 			tmp->cost += tmp->target->index;
 		else
-			tmp->cost += (a->size - tmp->target->index + 1);
+			tmp->cost += (a->size - tmp->target->index);
 	}
 	else if (tmp->value == tmp->target->value && tmp->index > b->size / 2)
 		tmp->cost++;
@@ -84,18 +148,18 @@ void	rotate_both_2(t_stack **a, t_stack **b, t_node *cheap)
 	
 	i = cheap->index;
 	j = cheap->target->index;
-	while (i > 1 && j > 1)
+	while (i > 0 && j > 0)
 	{
 		rr(&(*a)->head, &(*b)->head);
 		i--;
 		j--;
 	}
-	while (i > 1)
+	while (i > 0)
 	{
 		rb(&(*b)->head, 'n');
 		i--;
 	}
-	while (j > 1)
+	while (j > 0)
 	{
 		ra(&(*a)->head, 'n');
 		j--;
@@ -107,8 +171,8 @@ void	rrotate_both_2(t_stack **a, t_stack **b, t_node *cheap)
 	int		i;
 	int		j;
 	
-	i = (*b)->size - cheap->index + 1;
-	j = (*a)->size - cheap->target->index + 1;
+	i = (*b)->size - cheap->index;
+	j = (*a)->size - cheap->target->index;
 	while (i > 0 && j > 0)
 	{
 		rrr(&(*a)->head, &(*b)->head);
@@ -132,12 +196,12 @@ void	rb_rra(t_stack **a, t_stack **b, t_node *cheap)
 	int		i;
 	
 	i = cheap->index;
-	while (i > 1)
+	while (i > 0)
 	{
 		rb(&(*b)->head, 'n');
 		i--;
 	}
-	i = (*a)->size - cheap->target->index + 1;
+	i = (*a)->size - cheap->target->index;
 	while (i > 0)
 	{
 		rra(&(*a)->head, 'n');
@@ -148,14 +212,14 @@ void	rb_rra(t_stack **a, t_stack **b, t_node *cheap)
 void	rrb_ra(t_stack **a, t_stack **b, t_node *cheap)
 {
 	int		i;
-	i = (*b)->size - cheap->index + 1;
-	while (i >  0)
+	i = (*b)->size - cheap->index;
+	while (i > 0)
 	{
 		rrb(&(*b)->head, 'a');
 		i--;
 	}
 	i = cheap->target->index;
-	while (i > 1)
+	while (i > 0)
 	{
 		ra(&(*a)->head, 'n');
 		i--;
@@ -165,15 +229,10 @@ void	rrb_ra(t_stack **a, t_stack **b, t_node *cheap)
 void	find_place_in_a(t_stack **a, t_stack **b)
 {
 	t_node	*tmp;
-	int		no_targ;
 
-	no_targ = 0;
 	tmp = find_cheapest_in_a(*a, *b);
 	if (tmp->value == tmp->target->value)
-	{
 		find_cheapest_for_no_targ(*a, *b, tmp);
-		no_targ = 1;
-	}
 	if (tmp->index <= (*b)->size / 2 && tmp->target->index <= (*a)->size / 2)
 		rotate_both_2(a, b, tmp);
 	else if (tmp->index > (*b)->size / 2 && tmp->target->index > (*a)->size / 2)
@@ -185,8 +244,6 @@ void	find_place_in_a(t_stack **a, t_stack **b)
 	index_stack(*a);
 	index_stack(*b);
 	pa(&(*a)->head, &(*b)->head);
-	if (no_targ)
-		sa(&(*a)->head, 'n');
 }
 
 void	push_to_a(t_stack **a, t_stack **b)
@@ -224,7 +281,7 @@ void	bring_smallest(t_stack **a)
 	if (tmp->index <= (*a)->size / 2)
 	{
 		i = tmp->index;
-		while (i > 1)
+		while (i > 0)
 		{
 			ra(&(*a)->head, 'n');
 			i--;
@@ -232,7 +289,7 @@ void	bring_smallest(t_stack **a)
 	}
 	else
 	{
-		i = (*a)->size - tmp->index + 1;
+		i = (*a)->size - tmp->index;
 		while (i > 0)
 		{
 			rra(&(*a)->head, 'n');
@@ -245,7 +302,6 @@ int	main(int ac, char *av[])
 {
 	t_stack	*a;
 	t_stack	*b;
-	// (void)b;
 	a = malloc(sizeof(t_stack));
 	if (!a)
 		return (1);
@@ -262,7 +318,8 @@ int	main(int ac, char *av[])
 		sort_stack3(&a);
 		exit(EXIT_SUCCESS);
 	}
-	push_to_b(&a, &b);
+	// push_to_b(&a, &b);
+	a_2_b(&a, &b, 0);
 	push_to_a(&a, &b);
 	bring_smallest(&a);
 	// print_stack1(a, "a");

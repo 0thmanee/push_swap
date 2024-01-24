@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:55:25 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/24 16:33:52 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:21:13 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,11 +142,11 @@ void	index_stack(t_stack *stack)
 		stack->size = 0;
 		return ;
 	}
-	i = 1;
+	i = 0;
 	while (tmp)
 	{
 		tmp->index = i;
-		stack->size = i;
+		stack->size = i + 1;
 		i++;
 		tmp = tmp->next;
 	}
