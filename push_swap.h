@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:56:50 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/20 23:53:41 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:29:44 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,24 @@ void	rr(t_node **stack_a, t_node **stack_b);
 void	rra(t_node **stack, char c);
 void	rrb(t_node **stack, char c);
 void	rrr(t_node **stack_a, t_node **stack_b);
+void    print_stack1(t_stack *stack, char *name);
+void    print_stack2(t_stack *stack, char *name);
+int		stack_sorted(t_node *stack);
+void 	ft_free_nodes(t_stack **stack);
+int		stack_s_max(t_node *stack);
+t_node	*stack_s_min(t_node *stack);
+void	sort_stack3(t_stack **stack);
+void	free_nodes(t_node **node);
+t_node	*find_cheapest_in_b(t_stack *a, t_stack *b);
+void	rotate_no_target(t_stack **a, t_node *cheap);
+void	rotate_both(t_stack **a, t_stack **b, t_node *cheap);
+void	rrotate_both(t_stack **a, t_stack **b, t_node *cheap);
+void	ra_rrb(t_stack **a, t_stack **b, t_node *cheap);
+void	rra_rb(t_stack **a, t_stack **b, t_node *cheap);
+void	find_place_in_b(t_stack **a, t_stack **b);
+void	push_to_b(t_stack **a, t_stack **b);
+void	find_cheapest_in_a(t_stack *a, t_node *node);
+void	rotate_a(t_stack **a, t_node *node);
+void	push_to_a(t_stack **a, t_stack **b);
 
 #endif
