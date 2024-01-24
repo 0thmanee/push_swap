@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 00:03:01 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/24 23:09:04 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:10:56 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -318,8 +318,7 @@ int	main(int ac, char *av[])
 		sort_stack3(&a);
 		exit(EXIT_SUCCESS);
 	}
-	// push_to_b(&a, &b);
-	a_2_b(&a, &b, 0);
+	push_to_b(&a, &b);
 	push_to_a(&a, &b);
 	bring_smallest(&a);
 	// print_stack1(a, "a");
