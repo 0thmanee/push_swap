@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   tools_0.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:55:25 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/24 19:21:13 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:48:21 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	valid_nbr(char *nbr)
 {
@@ -97,57 +97,4 @@ void	free_lomor(char **strings)
 		i++;
 	}
 	free(strings);
-}
-
-int	valid_args(int ac, char *av[], t_stack **a)
-{
-	int		i;
-	int		j;
-	int		k;
-	char	**strings;
-	
-	i = 0;
-	k = 0;
-	while (++i < ac)
-	{
-		strings = ft_split(av[i], ' ');
-		if (strings)
-		{
-			j = -1;
-			while (strings[++j])
-			{
-				if (!strings[j] || !valid_nbr(strings[j]) || not_int(strings[j]))
-					(printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
-				if (!add_to_stack(a, ft_atoi(strings[j]), ++k))
-					(printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
-			}
-		}
-		else
-			(printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
-	}
-	free_lomor(strings);
-	return (1);
-}
-
-void	index_stack(t_stack *stack)
-{
-	t_node	*tmp;
-	int		i;
-
-	if (!stack)
-		return ;
-	tmp = stack->head;
-	if (!tmp)
-	{
-		stack->size = 0;
-		return ;
-	}
-	i = 0;
-	while (tmp)
-	{
-		tmp->index = i;
-		stack->size = i + 1;
-		i++;
-		tmp = tmp->next;
-	}
 }

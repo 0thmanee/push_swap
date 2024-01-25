@@ -1,48 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools_2.c                                          :+:      :+:    :+:   */
+/*   tools_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 16:24:58 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/24 19:24:00 by obouchta         ###   ########.fr       */
+/*   Created: 2024/01/25 19:25:57 by obouchta          #+#    #+#             */
+/*   Updated: 2024/01/25 19:48:36 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void    print_stack1(t_stack *stack, char *name)
-{
-    t_node    *current;
-
-    printf("------ %s ------\n", name);
-    current = stack->head;
-	printf("Size: %d	      |\n", stack->size);
-    printf("--------------- \n");
-    while (current != NULL)
-    {
-        printf("|index: %d value: %d cost: %d\n", current->index, current->value, current->cost);
-        current = current->next;
-    }
-    printf("---------------\n\n\n");
-}
-
-void    print_stack2(t_stack *stack, char *name)
-{
-    t_node    *current;
-
-    printf("------ %s ------\n", name);
-    current = stack->head;
-	printf("Size: %d	      |\n", stack->size);
-    printf("--------------- \n");
-    while (current)
-    {
-        printf("|index: %d value: %d cost: %d target: %d\n", current->index, current->value, current->cost, current->target->value);
-        current = current->next;
-    }
-    printf("---------------\n\n\n");
-}
+#include "../push_swap.h"
 
 int	stack_sorted(t_node *stack)
 {
@@ -134,43 +102,4 @@ void	sort_stack3(t_stack **stack)
 			sa(&(*stack)->head, 'n');
 	}
 	index_stack(*stack);
-}
-
-void free_nodes(t_node **node)
-{
-	t_node	*tmp;
-	t_node	*next;
-
-	tmp = *node;
-	while (tmp)
-	{
-		next = tmp->next;
-		free(tmp);
-		tmp = next;
-	}
-	node = NULL;
-}
-
-void	rotate_no_target(t_stack **stack, t_node *cheap)
-{
-	int		i;
-	
-	i = cheap->index;
-	if (cheap->index <= (*stack)->size / 2)
-	{
-		while (i > 1)
-		{
-			ra(&(*stack)->head, 'n');
-			i--;
-		}
-	}
-	else
-	{
-		i = (*stack)->size - i + 1;
-		while (i > 0)
-		{
-			rra(&(*stack)->head, 'n');
-			i--;
-		}
-	}
 }
