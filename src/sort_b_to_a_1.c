@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 19:35:29 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 19:48:18 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/25 20:57:11 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	find_target(t_stack *a, t_stack *b, t_node *tmp)
 {
 	t_node	*tmp2;
-	
+
 	if (tmp->index <= b->size / 2)
 		tmp->cost = tmp->index;
 	else
@@ -101,7 +101,7 @@ void	bring_smallest(t_stack **a)
 {
 	t_node	*tmp;
 	int		i;
-	
+
 	tmp = get_min_node((*a)->head);
 	if (tmp->index <= (*a)->size / 2)
 	{

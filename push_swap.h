@@ -6,17 +6,17 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:56:50 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 19:50:32 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/25 22:17:46 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <limits.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
 
 typedef struct s_node
 {
@@ -31,7 +31,7 @@ typedef struct s_stack
 {
 	t_node	*head;
 	int		size;
-} t_stack;
+}	t_stack;
 
 int		all_indexed(t_node *node);
 int		calc_size(t_node *node);
@@ -52,8 +52,8 @@ void	bring_smallest(t_stack **a);
 int		valid_nbr(char *nbr);
 int		not_int(char *nbr);
 int		check_duplicated(t_stack *stack, int data);
-int 	add_to_stack(t_stack **stack, int data, int index);
-void	free_lomor(char **strings);
+int		add_to_stack(t_stack **stack, int data);
+void	free_strs(char **strings);
 int		valid_args(int ac, char *av[], t_stack **a);
 void	index_stack(t_stack *stack);
 size_t	ft_strlen(const char *s);
@@ -61,10 +61,11 @@ long	ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		stack_sorted(t_node *stack);
-void 	ft_free_nodes(t_stack **stack);
+void	free_nodes(t_stack **stack);
 int		stack_s_max(t_node *stack);
 int		stack_s_min(t_node *stack);
 void	sort_stack3(t_stack **stack);
+void	free_both(char **strs, t_stack **a);
 void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);
 void	ra(t_node **stack, char c);

@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 19:35:29 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 19:48:15 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/25 20:56:46 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rotate_both(t_stack **a, t_stack **b, t_node *cheap)
 {
 	int		i;
 	int		j;
-	
+
 	i = cheap->index;
 	j = cheap->target->index;
 	while (i > 0 && j > 0)
@@ -41,7 +41,7 @@ void	rrotate_both(t_stack **a, t_stack **b, t_node *cheap)
 {
 	int		i;
 	int		j;
-	
+
 	i = (*b)->size - cheap->index;
 	j = (*a)->size - cheap->target->index;
 	while (i > 0 && j > 0)
@@ -65,7 +65,7 @@ void	rrotate_both(t_stack **a, t_stack **b, t_node *cheap)
 void	rb_rra(t_stack **a, t_stack **b, t_node *cheap)
 {
 	int		i;
-	
+
 	i = cheap->index;
 	while (i > 0)
 	{
@@ -83,6 +83,7 @@ void	rb_rra(t_stack **a, t_stack **b, t_node *cheap)
 void	rrb_ra(t_stack **a, t_stack **b, t_node *cheap)
 {
 	int		i;
+
 	i = (*b)->size - cheap->index;
 	while (i > 0)
 	{
@@ -99,21 +100,20 @@ void	rrb_ra(t_stack **a, t_stack **b, t_node *cheap)
 
 void	find_place_in_a(t_stack **a, t_stack **b)
 {
-	t_node	*tmp;
+	t_node	*nd;
 
-	tmp = find_cheapest_in_a(*a, *b);
-	if (tmp->value == tmp->target->value)
-		find_cheapest_for_no_targ(*a, *b, tmp);
-	if (tmp->index <= (*b)->size / 2 && tmp->target->index <= (*a)->size / 2)
-		rotate_both(a, b, tmp);
-	else if (tmp->index > (*b)->size / 2 && tmp->target->index > (*a)->size / 2)
-		rrotate_both(a, b, tmp);
-	else if (tmp->index <= (*b)->size / 2 && tmp->target->index > (*a)->size / 2)
-		rb_rra(a, b, tmp);
-	else if (tmp->index > (*b)->size / 2 && tmp->target->index <= (*a)->size / 2)
-		rrb_ra(a, b, tmp);
+	nd = find_cheapest_in_a(*a, *b);
+	if (nd->value == nd->target->value)
+		find_cheapest_for_no_targ(*a, *b, nd);
+	if (nd->index <= (*b)->size / 2 && nd->target->index <= (*a)->size / 2)
+		rotate_both(a, b, nd);
+	else if (nd->index > (*b)->size / 2 && nd->target->index > (*a)->size / 2)
+		rrotate_both(a, b, nd);
+	else if (nd->index <= (*b)->size / 2 && nd->target->index > (*a)->size / 2)
+		rb_rra(a, b, nd);
+	else if (nd->index > (*b)->size / 2 && nd->target->index <= (*a)->size / 2)
+		rrb_ra(a, b, nd);
 	index_stack(*a);
 	index_stack(*b);
 	pa(&(*a)->head, &(*b)->head);
 }
-

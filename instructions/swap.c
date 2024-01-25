@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:13:10 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 19:50:14 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/25 20:52:40 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	swap(t_node **stack)
 {
 	t_node	*tmp;
-	
+
 	tmp = *stack;
 	*stack = (*stack)->next;
 	tmp->next = (*stack)->next;
@@ -31,6 +31,7 @@ void	sa(t_node **stack, char c)
 		return ;
 	write(1, "sa\n", 3);
 }
+
 void	sb(t_node **stack, char c)
 {
 	if (!(*stack) || !(*stack)->next)

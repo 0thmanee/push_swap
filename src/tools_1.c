@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:02:49 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 19:48:23 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/25 22:17:39 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,26 @@ int	valid_args(int ac, char *av[], t_stack **a)
 {
 	int		i;
 	int		j;
-	int		k;
-	char	**strings;
-	
+	char	**strs;
+
 	i = 0;
-	k = 0;
 	while (++i < ac)
 	{
-		strings = ft_split(av[i], ' ');
-		if (strings)
+		strs = ft_split(av[i], ' ');
+		if (strs)
 		{
 			j = -1;
-			while (strings[++j])
+			while (strs[++j])
 			{
-				if (!strings[j] || !valid_nbr(strings[j]) || not_int(strings[j]))
-					(printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
-				if (!add_to_stack(a, ft_atoi(strings[j]), ++k))
-					(printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
+				if (!strs[j] || !valid_nbr(strs[j]) || not_int(strs[j]))
+					return (write(1, "Error\n", 6), free_both(strs, a), 0);
+				if (!add_to_stack(a, ft_atoi(strs[j])))
+					return (write(1, "Error\n", 6), free_both(strs, a), 0);
 			}
+			free_strs(strs);
 		}
 		else
-			(printf("Error\n"), free_lomor(strings), exit(EXIT_FAILURE));
+			return (write(1, "Error\n", 6), free_both(strs, a), 0);
 	}
 	return (1);
 }

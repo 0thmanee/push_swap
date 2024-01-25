@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 19:25:57 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 19:48:36 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/25 21:04:43 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	stack_sorted(t_node *stack)
 {
 	t_node	*tmp;
 	int		curr;
-	
+
 	tmp = stack;
 	curr = tmp->value;
 	while (tmp)
@@ -29,7 +29,7 @@ int	stack_sorted(t_node *stack)
 	return (1);
 }
 
-void ft_free_nodes(t_stack **stack)
+void	free_nodes(t_stack **stack)
 {
 	t_node	*tmp;
 
@@ -80,7 +80,7 @@ int	stack_s_min(t_node *stack)
 void	sort_stack3(t_stack **stack)
 {
 	t_node	*node;
-	
+
 	node = (*stack)->head;
 	if ((*stack)->size == 1)
 		return ;
@@ -91,7 +91,7 @@ void	sort_stack3(t_stack **stack)
 		return ;
 	}
 	else if ((*stack)->size == 3)
-	{	
+	{
 		if (node->value == stack_s_max(node))
 			ra(&(*stack)->head, 'n');
 		node = (*stack)->head;

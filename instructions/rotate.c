@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:25:16 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 19:49:29 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/25 20:51:47 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	rotate(t_node **stack)
 {
 	t_node	*tmp;
 	t_node	*tmp2;
-	
+
 	tmp = *stack;
 	*stack = (*stack)->next;
 	tmp2 = *stack;

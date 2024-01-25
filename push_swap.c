@@ -6,11 +6,17 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 00:03:01 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 19:39:32 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/25 22:19:10 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_both(char **strs, t_stack **a)
+{
+	free_nodes(a);
+	free_strs(strs);
+}
 
 void	push_to_a(t_stack **a, t_stack **b)
 {
@@ -26,12 +32,13 @@ int	main(int ac, char *av[])
 {
 	t_stack	*a;
 	t_stack	*b;
+
 	a = malloc(sizeof(t_stack));
 	if (!a)
-		return (1);
+		exit(EXIT_FAILURE);
 	b = malloc(sizeof(t_stack));
 	if (!b)
-		return (1);
+		exit(EXIT_FAILURE);
 	if (ac == 1)
 		exit(EXIT_FAILURE);
 	if (!valid_args(ac, av, &a))
@@ -45,6 +52,5 @@ int	main(int ac, char *av[])
 	push_to_b(&a, &b);
 	push_to_a(&a, &b);
 	bring_smallest(&a);
-	exit(EXIT_SUCCESS);
-	return (0);
+	(free_nodes(&a), free_nodes(&b), exit(EXIT_SUCCESS));
 }

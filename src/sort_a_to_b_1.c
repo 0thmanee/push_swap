@@ -6,18 +6,18 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 19:30:47 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 19:48:13 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/25 20:54:37 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void split_stack(t_stack **a, t_stack **b)
+void	split_stack(t_stack **a, t_stack **b)
 {
 	int	part;
 	int	i;
-	
-    while (calc_size((*a)->head) > 3)
+
+	while (calc_size((*a)->head) > 3)
 	{
 		part = calc_size((*a)->head) / 4;
 		i = 0;

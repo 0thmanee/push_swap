@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:55:25 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 19:48:21 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/25 22:17:14 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	valid_nbr(char *nbr)
 		i++;
 	if (!nbr[i])
 		return (0);
-	while(nbr[i])
+	while (nbr[i])
 	{
 		if (nbr[i] < '0' || nbr[i] > '9')
 			return (0);
@@ -57,18 +57,17 @@ int	check_duplicated(t_stack *stack, int data)
 	return (0);
 }
 
-int add_to_stack(t_stack **stack, int data, int index)
+int	add_to_stack(t_stack **stack, int data)
 {
 	t_node	*node;
 	t_node	*tmp;
-	
+
 	if (check_duplicated(*stack, data))
 		return (0);
 	node = malloc(sizeof(t_node));
 	if (!node)
 		return (0);
 	node->value = data;
-	node->index = index;
 	node->next = NULL;
 	if (!(*stack)->head)
 	{
@@ -84,7 +83,7 @@ int add_to_stack(t_stack **stack, int data, int index)
 	return (1);
 }
 
-void	free_lomor(char **strings)
+void	free_strs(char **strings)
 {
 	int		i;
 
@@ -93,7 +92,8 @@ void	free_lomor(char **strings)
 	i = 0;
 	while (strings[i])
 	{
-		free(strings[i]);
+		if (strings[i])
+			free(strings[i]);
 		i++;
 	}
 	free(strings);
