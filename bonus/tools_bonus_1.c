@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_1.c                                          :+:      :+:    :+:   */
+/*   tools_bonus_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 17:02:49 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 00:01:01 by obouchta         ###   ########.fr       */
+/*   Created: 2024/01/29 11:41:31 by obouchta          #+#    #+#             */
+/*   Updated: 2024/01/29 11:41:47 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "checker_bonus.h"
 
 int	valid_args(int ac, char *av[], t_stack **a)
 {
@@ -28,14 +28,14 @@ int	valid_args(int ac, char *av[], t_stack **a)
 			while (strs[++j])
 			{
 				if (!strs[j] || !valid_nbr(strs[j]) || not_int(strs[j]))
-					return (write(2, "Error\n", 6), free_both(strs, a), 0);
+					return (write(1, "Error\n", 6), free_both(strs, a), 0);
 				if (!add_to_stack(a, ft_atoi(strs[j])))
-					return (write(2, "Error\n", 6), free_both(strs, a), 0);
+					return (write(1, "Error\n", 6), free_both(strs, a), 0);
 			}
 			free_strs(strs);
 		}
 		else
-			return (write(2, "Error\n", 6), free_both(strs, a), 0);
+			return (write(1, "Error\n", 6), free_both(strs, a), 0);
 	}
 	return (1);
 }

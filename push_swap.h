@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:56:50 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 22:17:46 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 00:11:28 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		stack_sorted(t_node *stack);
 void	free_nodes(t_stack **stack);
 int		stack_s_max(t_node *stack);
 int		stack_s_min(t_node *stack);
-void	sort_stack3(t_stack **stack);
+void	magic_sort(t_stack **a, t_stack **b);
 void	free_both(char **strs, t_stack **a);
 void	pa(t_node **stack_a, t_node **stack_b);
 void	pb(t_node **stack_a, t_node **stack_b);

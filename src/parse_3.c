@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 19:25:57 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/29 11:38:20 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 00:21:52 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,29 +77,51 @@ int	stack_s_min(t_node *stack)
 	return (min_value);
 }
 
-void	sort_stack3(t_stack **stack)
+static	void sort_3(t_stack **stack)
 {
 	t_node	*node;
-
+	
 	node = (*stack)->head;
-	if ((*stack)->size == 1)
-		return ;
-	if ((*stack)->size == 2)
+	if (node->value == stack_s_max(node))
+		ra(&(*stack)->head, 'n');
+	node = (*stack)->head;
+	if (node->next->value == stack_s_max(node))
+		rra(&(*stack)->head, 'n');
+	node = (*stack)->head;
+	if (node->value > node->next->value)
+		sa(&(*stack)->head, 'n');
+}
+
+static	void sort_5(t_stack **a, t_stack **b)
+{
+	index_stack_sorted(*a);
+	while (calc_size((*a)->head) > 3)
 	{
-		if (node->value > node->next->value)
-			sa(&(*stack)->head, 'n');
+		if ((*a)->head->index == 0 || (*a)->head->index == 1)
+			pb(&(*a)->head, &(*b)->head);
+		else
+			ra(&(*a)->head, 'n');
+	}
+	sort_3(a);
+	if ((*b)->head->value < (*b)->head->next->value)
+		rb(&(*b)->head, 'n');
+	pa(&(*a)->head, &(*b)->head);
+	pa(&(*a)->head, &(*b)->head);
+}
+
+void	magic_sort(t_stack **a, t_stack **b)
+{
+	if ((*a)->size == 1)
+		return ;
+	if ((*a)->size == 2)
+	{
+		if ((*a)->head->value > (*a)->head->next->value)
+			sa(&(*a)->head, 'n');
 		return ;
 	}
-	else if ((*stack)->size == 3)
-	{
-		if (node->value == stack_s_max(node))
-			ra(&(*stack)->head, 'n');
-		node = (*stack)->head;
-		if (node->next->value == stack_s_max(node))
-			rra(&(*stack)->head, 'n');
-		node = (*stack)->head;
-		if (node->value > node->next->value)
-			sa(&(*stack)->head, 'n');
-	}
-	index_stack(*stack);
+	else if ((*a)->size == 3)
+		sort_3(a);
+	else if ((*a)->size == 5)
+		sort_5(a, b);
+	index_stack(*a);
 }

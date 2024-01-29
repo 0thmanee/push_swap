@@ -6,11 +6,11 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 18:40:34 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/28 18:40:51 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:40:06 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 int	valid_nbr(char *nbr)
 {

@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 00:03:01 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 22:19:10 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 00:11:35 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	main(int ac, char *av[])
 	if (!valid_args(ac, av, &a))
 		exit(EXIT_FAILURE);
 	index_stack(a);
-	if (stack_sorted(a->head) || a->size <= 3)
+	if (stack_sorted(a->head) || a->size <= 3 || a->size == 5)
 	{
-		sort_stack3(&a);
+		magic_sort(&a, &b);
 		exit(EXIT_SUCCESS);
 	}
 	push_to_b(&a, &b);

@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 19:30:47 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/29 11:32:44 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 00:18:37 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	push_to_b(t_stack **a, t_stack **b)
 	index_stack(*a);
 	index_stack(*b);
 	if ((*a)->size <= 3)
-		sort_stack3(a);
+		magic_sort(a, b);
 	index_stack(*a);
 	index_stack(*b);
 }
