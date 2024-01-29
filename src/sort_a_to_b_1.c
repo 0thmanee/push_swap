@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 19:30:47 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 20:54:37 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:32:44 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ void	split_stack(t_stack **a, t_stack **b)
 
 	while (calc_size((*a)->head) > 3)
 	{
-		part = calc_size((*a)->head) / 4;
+		part = calc_size((*a)->head) / 2;
 		i = 0;
 		while (i < part)
 		{
+			if (calc_size((*a)->head) <= 3)
+				break ;
 			if ((*a)->head->index <= (part / 2) + calc_size((*b)->head))
 			{
 				pb(&(*a)->head, &(*b)->head);
