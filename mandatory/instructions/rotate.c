@@ -1,53 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 17:13:10 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 16:52:18 by obouchta         ###   ########.fr       */
+/*   Created: 2024/01/19 17:25:16 by obouchta          #+#    #+#             */
+/*   Updated: 2024/01/30 23:20:36 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/push_swap.h"
+#include "../push_swap.h"
 
-static void	swap(t_node **stack)
+static void	rotate(t_node **stack)
 {
 	t_node	*tmp;
+	t_node	*tmp2;
 
 	tmp = *stack;
 	*stack = (*stack)->next;
-	tmp->next = (*stack)->next;
-	(*stack)->next = tmp;
+	tmp2 = *stack;
+	while (tmp2->next)
+		tmp2 = tmp2->next;
+	tmp2->next = tmp;
+	tmp->next = NULL;
 }
 
-void	sa(t_node **stack, char c)
+void	ra(t_node **stack, char c)
 {
 	if (!(*stack) || !(*stack)->next)
 		return ;
-	swap(stack);
+	rotate(stack);
 	if (c == 'y')
 		return ;
-	write(1, "sa\n", 3);
+	write(1, "ra\n", 3);
 }
 
-void	sb(t_node **stack, char c)
+void	rb(t_node **stack, char c)
 {
 	if (!(*stack) || !(*stack)->next)
 		return ;
-	swap(stack);
+	rotate(stack);
 	if (c == 'y')
 		return ;
-	write(1, "sb\n", 3);
+	write(1, "rb\n", 3);
 }
 
-void	ss(t_node **stack_a, t_node **stack_b)
+void	rr(t_node **stack_a, t_node **stack_b)
 {
 	if ((*stack_a && (*stack_a)->next) || (*stack_b && (*stack_b)->next))
 	{
-		write(1, "ss\n", 3);
-		sa(stack_a, 'y');
-		sb(stack_b, 'y');
+		ra(stack_a, 'y');
+		rb(stack_b, 'y');
+		write(1, "rr\n", 3);
 	}
 }

@@ -6,11 +6,11 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:24:14 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 16:52:27 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:24:33 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/push_swap.h"
+#include "../push_swap.h"
 
 static void	push(t_node **stack_a, t_node **stack_b)
 {

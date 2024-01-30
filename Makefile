@@ -3,9 +3,9 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 NAME = push_swap
-CFILES = src/push_swap.c src/sort_a_to_b_0.c src/sort_a_to_b_1.c src/sort_b_to_a_0.c src/sort_b_to_a_1.c src/parse_0.c src/parse_1.c src/parse_2.c src/parse_3.c instructions/swap.c instructions/push.c instructions/rotate.c instructions/rrotate.c
+CFILES = mandatory/push_swap.c mandatory/sort_a_to_b_0.c mandatory/sort_a_to_b_1.c mandatory/sort_b_to_a_0.c mandatory/sort_b_to_a_1.c mandatory/parse_0.c mandatory/parse_1.c mandatory/parse_2.c mandatory/parse_3.c mandatory/instructions/swap.c mandatory/instructions/push.c mandatory/instructions/rotate.c mandatory/instructions/rrotate.c
 OFILES = $(CFILES:.c=.o)
-INCLUDES = src/push_swap.h
+INCLUDES = mandatory/push_swap.h
 
 NAME_BONUS = checker
 CFILES_BONUS = bonus/checker_bonus.c bonus/tools_bonus_0.c bonus/tools_bonus_1.c bonus/tools_bonus_2.c bonus/tools_bonus_3.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c bonus/instrs_bonus/swap.c bonus/instrs_bonus/push.c bonus/instrs_bonus/rotate.c bonus/instrs_bonus/rrotate.c
@@ -28,7 +28,7 @@ $(NAME_BONUS): $(OFILES_BONUS)
 bonus/%.o: bonus/%.c $(INCLUDES_BONUS)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-%.o: %.c $(INCLUDES)
+mandatory/%.o: mandatory/%.c $(INCLUDES)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

@@ -6,14 +6,13 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:56:50 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 00:11:28 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:24:18 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
