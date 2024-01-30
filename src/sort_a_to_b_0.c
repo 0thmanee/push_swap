@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 19:30:47 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 16:51:21 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:07:45 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,27 +62,21 @@ int	stack_custom_min(t_node *stack)
 void	index_stack_sorted(t_stack *stack)
 {
 	t_node	*tmp;
+	t_node	*tmp2;
 	int		ind;
-	int		min;
 
 	tmp = stack->head;
-	ind = 1;
-	stack->size = 0;
 	while (tmp)
 	{
-		tmp->index = -1;
-		stack->size++;
-		tmp = tmp->next;
-	}
-	while (!all_indexed(stack->head))
-	{
-		tmp = stack->head;
-		min = stack_custom_min(stack->head);
-		while (tmp->value != min)
+		tmp2 = stack->head;
+		ind = 0;
+		while (tmp2)
 		{
-			tmp = tmp->next;
+			if (tmp->value > tmp2->value)
+				ind++;
+			tmp2 = tmp2->next;
 		}
 		tmp->index = ind;
-		ind++;
+		tmp = tmp->next;
 	}
 }

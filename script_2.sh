@@ -4,10 +4,10 @@ filename=.result000
 
 touch $filename
 i=1
-while [[ i -le 100 ]]
+while [[ i -le 1000 ]]
 do
-A=($(seq -500 500 | sort -R | head -n 5))
-./push_swap "${A[@]}" | wc -l | awk '{if ($1 > 12) printf("*************************** %d\n", $1); else print $1 }' >> $filename
+A=($(seq -100 1000 | sort -R | head -n 100))
+./push_swap "${A[@]}" | wc -l | awk '{if ($1 > 700) printf("*************************** %d\n", $1); else print $1 }' >> $filename
 ./push_swap "${A[@]}" | ./checker_Mac "${A[@]}" >> $filename
 (( i += 1 ))
 done

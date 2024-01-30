@@ -1,6 +1,12 @@
 {
 	"files.associations": {
 		"sstream": "c",
-		"checker_bonus.h": "c"
+		"checker_bonus.h": "c",
+		"push_swap.h": "c",
+		"algorithm": "c",
+		"chrono": "c",
+		"limits": "c",
+		"random": "c",
+		"ratio": "c"
 	}
 }

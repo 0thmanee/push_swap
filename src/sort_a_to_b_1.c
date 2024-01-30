@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 19:30:47 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 20:05:41 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:08:50 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	sort_5(t_stack **a, t_stack **b)
 	index_stack_sorted(*a);
 	while (calc_size((*a)->head) > 3)
 	{
-		if ((*a)->head->index == 1 || (*a)->head->index == 2)
+		if ((*a)->head->index == 0 || (*a)->head->index == 1)
 			pb(&(*a)->head, &(*b)->head);
 		else
 			ra(&(*a)->head, 'n');
