@@ -6,11 +6,11 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:25:16 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 20:51:47 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:52:29 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../src/push_swap.h"
 
 static void	rotate(t_node **stack)
 {

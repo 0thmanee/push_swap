@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 00:03:01 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 00:11:35 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:49:43 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,26 @@ void	free_both(char **strs, t_stack **a)
 {
 	free_nodes(a);
 	free_strs(strs);
+}
+
+void	push_to_b(t_stack **a, t_stack **b)
+{
+	if (!(*a)->head || !(*a)->head->next)
+		return ;
+	if (!(*b))
+	{
+		*b = malloc(sizeof(t_stack));
+		if (!*b)
+			return ;
+	}
+	index_stack_sorted(*a);
+	split_stack(a, b);
+	index_stack(*a);
+	index_stack(*b);
+	if ((*a)->size <= 3)
+		magic_sort(a, b);
+	index_stack(*a);
+	index_stack(*b);
 }
 
 void	push_to_a(t_stack **a, t_stack **b)

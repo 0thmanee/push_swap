@@ -6,12 +6,12 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 18:37:26 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/29 22:07:48 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 20:10:38 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # include <stdio.h>
 # include <stdlib.h>

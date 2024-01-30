@@ -6,11 +6,11 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:02:49 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 00:01:01 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:51:27 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	valid_args(int ac, char *av[], t_stack **a)
 {

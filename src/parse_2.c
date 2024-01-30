@@ -6,11 +6,11 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:24:58 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/29 11:38:17 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:51:30 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static size_t	count_words(char const *s, char c)
 {

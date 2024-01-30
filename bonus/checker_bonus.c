@@ -6,51 +6,19 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 17:35:05 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/29 23:48:58 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 20:19:32 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
-
-void    print_stack1(t_stack *stack, char *name)
-{
-    t_node    *current;
-
-    printf("------ %s ------\n", name);
-    current = stack->head;
-	printf("Size: %d	      |\n", stack->size);
-    printf("--------------- \n");
-    while (current != NULL)
-    {
-        printf("|index: %d value: %d cost: %d\n", current->index, current->value, current->cost);
-        current = current->next;
-    }
-    printf("---------------\n\n\n");
-}
-
-void    print_stack2(t_stack *stack, char *name)
-{
-    t_node    *current;
-
-    printf("------ %s ------\n", name);
-    current = stack->head;
-	printf("Size: %d	      |\n", stack->size);
-    printf("--------------- \n");
-    while (current)
-    {
-        printf("|index: %d value: %d cost: %d target: %d\n", current->index, current->value, current->cost, current->target->value);
-        current = current->next;
-    }
-    printf("---------------\n\n\n");
-}
-
 
 void	read_instructions(char **s)
 {
 	char	*inp;
 	int		i;
 
-	(inp = get_next_line(0), i = 0);
+	inp = get_next_line(0);
+	i = 0;
 	while (inp)
 	{
 		(!ft_strncmp(inp, "sa\n", 4) && (i++, (*s = ft_strjoin(*s, "sa\n"))));
@@ -67,11 +35,12 @@ void	read_instructions(char **s)
 		free(inp);
 		if (!i)
 			(write(2, "Error\n", 6), exit(EXIT_FAILURE));
-		(inp = get_next_line(0), i = 0);
+		inp = get_next_line(0);
+		i = 0;
 	}
 }
 
-void	apply(char *s, t_stack **a, t_stack **b)
+void	ft_apply(char *s, t_stack **a, t_stack **b)
 {
 	if (!ft_strncmp(s, "sa", 3))
 		sa(&(*a)->head, 'n');
@@ -108,9 +77,10 @@ void	apply_instructions(char *s, t_stack **a, t_stack **b)
 	i = 0;
 	while (instrs[i])
 	{
-		apply(instrs[i], a, b);
+		ft_apply(instrs[i], a, b);
 		i++;
 	}
+	free_strs(instrs);
 }
 
 void	check_sorted(t_stack *a, t_stack *b)
@@ -131,10 +101,6 @@ void	check_sorted(t_stack *a, t_stack *b)
 	}
 	(write(1, "OK\n", 3), exit(EXIT_SUCCESS));
 }
-void check()
-{
-	system("leaks checker");
-}
 
 int	main(int ac, char *av[])
 {
@@ -142,7 +108,6 @@ int	main(int ac, char *av[])
 	t_stack	*b;
 	char	*instrs;
 
-	// atexit(check);
 	a = malloc(sizeof(t_stack));
 	if (!a)
 		exit(EXIT_FAILURE);
@@ -156,6 +121,5 @@ int	main(int ac, char *av[])
 	read_instructions(&instrs);
 	apply_instructions(instrs, &a, &b);
 	check_sorted(a, b);
-	//print_stack1(a, "a");
 	exit(EXIT_SUCCESS);
 }

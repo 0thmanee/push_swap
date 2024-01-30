@@ -6,11 +6,11 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 19:30:47 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/25 19:48:07 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:51:21 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	all_indexed(t_node *node)
 {
