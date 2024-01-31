@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:55:25 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/31 11:14:50 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:39:48 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ int	valid_nbr(char *nbr)
 
 int	not_int(char *nbr)
 {
-	while (*nbr == '0')
-		nbr++;
-	if (ft_strlen(nbr) >= 19)
-		return (1);
 	if (ft_atoi(nbr) < -2147483648 || ft_atoi(nbr) > 2147483647)
 		return (1);
 	return (0);

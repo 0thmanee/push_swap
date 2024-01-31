@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 00:03:01 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 16:49:43 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:21:11 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ int	main(int ac, char *av[])
 	push_to_b(&a, &b);
 	push_to_a(&a, &b);
 	bring_smallest(&a);
-	(free_nodes(&a), free_nodes(&b), exit(EXIT_SUCCESS));
+	exit(EXIT_SUCCESS);
 }
