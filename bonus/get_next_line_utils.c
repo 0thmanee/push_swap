@@ -6,11 +6,11 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 18:18:09 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 23:25:45 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/31 18:34:26 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../bonus/checker_bonus.h"
+#include "checker_bonus.h"
 
 int	ft_strchr(char *buffer, int c)
 {

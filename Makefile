@@ -8,7 +8,7 @@ OFILES = $(CFILES:.c=.o)
 INCLUDES = mandatory/push_swap.h
 
 NAME_BONUS = checker
-CFILES_BONUS = bonus/checker_bonus.c bonus/tools_bonus_0.c bonus/tools_bonus_1.c bonus/tools_bonus_2.c bonus/tools_bonus_3.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c bonus/instrs_bonus/swap.c bonus/instrs_bonus/push.c bonus/instrs_bonus/rotate.c bonus/instrs_bonus/rrotate.c
+CFILES_BONUS = bonus/checker_bonus.c bonus/tools_bonus_0.c bonus/tools_bonus_1.c bonus/tools_bonus_2.c bonus/tools_bonus_3.c bonus/get_next_line.c bonus/get_next_line_utils.c bonus/instrs_bonus/swap.c bonus/instrs_bonus/push.c bonus/instrs_bonus/rotate.c bonus/instrs_bonus/rrotate.c
 OFILES_BONUS = $(CFILES_BONUS:.c=.o)
 INCLUDES_BONUS = bonus/checker_bonus.h
 

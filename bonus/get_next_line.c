@@ -6,11 +6,11 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:25:45 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/29 12:21:38 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/31 18:34:18 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../bonus/checker_bonus.h"
+#include "checker_bonus.h"
 
 char	*read_file(char *total_str, int fd)
 {
