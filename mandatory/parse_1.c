@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:02:49 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/31 20:23:30 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/01/31 21:27:16 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,6 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-static long	calc_result(long tmp, long result, char c, int sign)
-{
-	tmp = (result * 10) + (c - 48);
-	if (tmp < result && sign == 1)
-		return (-1);
-	else if (tmp < result && sign == -1)
-		return (0);
-	return (tmp);
-}
 
 long	ft_atoi(const char *str)
 {
@@ -104,7 +95,7 @@ long	ft_atoi(const char *str)
 	}
 	while (str[i] && str[i] >= '0' && str[i] <= '9' && res < (long)INT_MAX + 1)
 	{
-		res = calc_result(tmp, res, str[i], sign);
+		res = (res * 10) + (str[i] - 48);
 		i++;
 	}
 	return (sign * res);
