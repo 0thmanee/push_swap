@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 11:41:31 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/31 21:27:39 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:36:31 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,23 @@ int	valid_args(int ac, char *av[], t_stack **a)
 		}
 		else
 			return (write(1, "Error\n", 6), free_both(strs, a), 0);
+	}
+	return (1);
+}
+
+int	stack_sorted(t_node *stack)
+{
+	t_node	*tmp;
+	int		curr;
+
+	tmp = stack;
+	curr = tmp->value;
+	while (tmp)
+	{
+		if (tmp->value < curr)
+			return (0);
+		curr = tmp->value;
+		tmp = tmp->next;
 	}
 	return (1);
 }

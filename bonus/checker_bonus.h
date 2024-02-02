@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 18:37:26 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 23:16:55 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:36:52 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		not_int(char *nbr);
 int		check_duplicated(t_stack *stack, int data);
 int		add_to_stack(t_stack **stack, int data);
 int		valid_args(int ac, char *av[], t_stack **a);
+int		stack_sorted(t_node *stack);
 void	index_stack(t_stack *stack);
 size_t	ft_strlen(const char *s);
 long	ft_atoi(const char *str);

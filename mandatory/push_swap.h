@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 20:56:50 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 23:24:18 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:17:42 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	index_stack(t_stack *stack);
 size_t	ft_strlen(const char *s);
 long	ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		stack_sorted(t_node *stack);
 void	free_nodes(t_stack **stack);
 int		stack_s_max(t_node *stack);

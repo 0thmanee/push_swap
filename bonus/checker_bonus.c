@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 17:35:05 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/31 20:56:51 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:41:51 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,6 @@ void	ft_apply(char *s, t_stack **a, t_stack **b)
 		rrr(&(*a)->head, &(*b)->head);
 }
 
-void	apply_instructions(char *s, t_stack **a, t_stack **b)
-{
-	char	**instrs;
-	int		i;
-
-	instrs = ft_split(s, '\n');
-	if (!instrs)
-		(write(1, "KO\n", 3), exit(EXIT_FAILURE));
-	i = 0;
-	while (instrs[i])
-	{
-		ft_apply(instrs[i], a, b);
-		i++;
-	}
-	free_strs(instrs);
-}
-
 void	check_sorted(t_stack *a, t_stack *b)
 {
 	t_node	*tmp;
@@ -100,6 +83,28 @@ void	check_sorted(t_stack *a, t_stack *b)
 		tmp = tmp->next;
 	}
 	(write(1, "OK\n", 3), exit(EXIT_SUCCESS));
+}
+
+void	apply_instructions(char *s, t_stack **a, t_stack **b)
+{
+	char	**instrs;
+	int		i;
+
+	instrs = ft_split(s, '\n');
+	if (!instrs)
+	{
+		if (!stack_sorted((*a)->head))
+			(write(1, "KO\n", 3), exit(EXIT_FAILURE));
+		else
+			(write(1, "OK\n", 3), exit(EXIT_SUCCESS));
+	}
+	i = 0;
+	while (instrs[i])
+	{
+		ft_apply(instrs[i], a, b);
+		i++;
+	}
+	free_strs(instrs);
 }
 
 int	main(int ac, char *av[])

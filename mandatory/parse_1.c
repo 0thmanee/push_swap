@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:02:49 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/31 21:27:16 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/02/02 21:20:17 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ size_t	ft_strlen(const char *s)
 		len++;
 	return (len);
 }
-
 
 long	ft_atoi(const char *str)
 {
