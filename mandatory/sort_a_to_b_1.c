@@ -6,7 +6,7 @@
 /*   By: obouchta <obouchta@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 19:30:47 by obouchta          #+#    #+#             */
-/*   Updated: 2024/01/30 23:08:50 by obouchta         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:24:04 by obouchta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	sort_5(t_stack **a, t_stack **b)
 
 void	magic_sort(t_stack **a, t_stack **b)
 {
-	if ((*a)->size == 1)
+	if ((*a)->size == 1 || stack_sorted((*a)->head))
 		return ;
 	if ((*a)->size == 2)
 	{
